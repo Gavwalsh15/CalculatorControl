@@ -1,12 +1,17 @@
 package ie.atu.calculatorcontrol;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalculatorController{
-    @GetMapping("/calculate")
-    public Object calculate(int num1, int num2, String operation){
-        int total;
+    //@GetMapping("/calculate")
+    //public Object calculate(@RequestParam int num1,@RequestParam int num2,@RequestParam String operation){
+    @GetMapping("/calculate/{num1}/{num2}/{operation}")
+    public Object calculate(@PathVariable int num1, @PathVariable int num2, @PathVariable String operation){
+
+    int total;
         String lowerCase = operation.toLowerCase();
         switch (lowerCase){
             case "add"-> total = num1 + num2;
